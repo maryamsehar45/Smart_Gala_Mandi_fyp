@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Gala Mandi </title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Gala Mandi</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    
+  <!-- Navigation -->
+  <header>
+    <div class="logo">
+      <img src="https://i.ibb.co/7YbDtbR/mandi-logo.png" alt="Smart Gala Mandi Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><button id="translate-btn">Eng / اردو</button></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <h2>welcome To</h2>
+      <h1>Smart Gala Mandi</h1>
+      <p>Online Platform for Farmers and Buyers</p>
+      <div class="buttons">
+        <button class="btn">Explore Market</button>
+        <button class="btn green">Start Selling</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+
+  <!-- Google Translate -->
+  <div id="google_translate_element" style="display:none;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {pageLanguage: 'en', includedLanguages: 'en,ur', layout: google.translate.TranslateElement.InlineLayout.SIMPLE},
+        'google_translate_element'
+      );
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
