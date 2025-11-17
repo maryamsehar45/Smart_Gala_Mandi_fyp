@@ -3,53 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Gala Mandi</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Smart Gala Mandi - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <link rel="stylesheet" href="style.css">
+   <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="logo">
-      <h2>Smart Gala Mandi</h2>
-    </div>
-    <nav>
-      <ul>
-        <li><button id="translate-btn">Eng / اردو</button></li>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Welcome to Smart Gala Mandi</h1>
-      <p>Online Platform for Farmers and Buyers </p>
-      <div class="button-container">
-        <button class="btn">Explore Market</button>
-        <button class="btn">Start Selling</button>
+  <!-- ===== HEADER START ===== -->
+  <header class="site-header">
+  <div class="site-header-inner">
+    <div class="logo">
+      <img src="assets/logo.png" alt="Smart Gala Mandi Logo">
+      <div class="logo-text">Smart Gala Mandi</div>
+    </div>
+
+    <div class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="cta-button">Login</button>
+      <div class="lang-btn">Eng / اردو</div>
+    </div>
+  </div>
+</header>
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero-section">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Welcome to Smart Gala Mandi</h1>
+        <p>Online platform for farmers and buyers</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn btn-primary">Explore Marketplace</a>
+          <a href="#" class="btn btn-primary">Start Selling</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="circle"></div>
+        <img src="assets/girl.png" alt="Smart Gala Mandi">
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  
+  <!-- ===== FOOTER ===== -->
   <footer>
-    <p>| © 2025 Smart Gala Mandi</p>
-  </footer>
-
-  <!-- Google Translate -->
-  <div id="google_translate_element" style="display:none;"></div>
-  <script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement(
-        {pageLanguage: 'en', includedLanguages: 'en,ur'},
-        'google_translate_element'
-      );
-    }
-  </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  <script src="script.js"></script>
+  <div class="footer-inner">
+    <p>© 2025 Smart Gala Mandi | All Rights Reserved</p>
+  </div>
+</footer>
+  
 </body>
 </html>

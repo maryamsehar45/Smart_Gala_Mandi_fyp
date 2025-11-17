@@ -3,38 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - Smart Gala Mandi</title>
+  <title>Smart Gala Mandi - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
-</head>
+  <script src="script.js" defer></script>
+</head>  
 <body>
-  <header>
-    <div class="logo"><h2>Smart Gala Mandi</h2></div>
-    <nav>
-      <ul>
-        <li><button id="translate-btn">Eng / اردو</button></li>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About Us</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
+
+  <!-- ===== HEADER START ===== -->
+ <header class="site-header">
+  <div class="site-header-inner">
+    <div class="logo">
+      <img src="assets/logo.png" alt="Smart Gala Mandi Logo">
+      <div class="logo-text">Smart Gala Mandi</div>
+    </div>
+
+    <div class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
     </nav>
-  </header>
 
-  <section style="padding: 60px 80px; text-align: center;">
-    <h1>About Smart Gala Mandi</h1>
-    <p style="margin-top:20px; line-height:1.7;">
-      Smart Gala Mandi is a modern online agricultural marketplace that bridges the gap between farmers and buyers. Our goal is to empower local farmers through technology by offering them direct access to markets and fair prices for their produce.
-    </p>
-    <p style="margin-top:20px; line-height:1.7;">
-      We simplify trading, reduce the role of middlemen, and bring transparency to the agricultural system. Farmers can list their products easily while buyers get access to quality goods directly from trusted sources.
-    </p>
-    <p style="margin-top:20px; line-height:1.7;">
-      Our mission is to revolutionize the agriculture sector of Pakistan through digital innovation — making farming more efficient, profitable, and sustainable.
-    </p>
-  </section>
+    <div class="header-actions">
+      <button class="cta-button">Login</button>
+      <div class="lang-btn">Eng / اردو</div>
+    </div>
+  </div>
+</header>
+<section class="about-section">
+  <div class="about-content">
+    <div class="about-text">
+      <h2>About Us</h2>
+      <p>
+        Smart Gala Mandi is a modern digital marketplace that connects farmers,
+        traders, and buyers through a reliable online platform. We aim to make
+        agriculture trading simple, transparent, and profitable for everyone.
+      </p>
+      <p>
+        Our mission is to empower local farmers with digital tools and help
+        buyers access fresh produce directly from trusted sources — saving time,
+        cost, and effort.
+      </p>
 
-  <footer>
-    <p>Developed by Maryam Sehar | © 2025 Smart Gala Mandi</p>
-  </footer>
-  <script src="script.js"></script>
+    </div>
+
+    <div class="about-image">
+      <div class="circle"></div>
+      <img src="assets/about.png" alt="About Smart Gala Mandi" />
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-inner">
+    <p>© 2025 Smart Gala Mandi | All Rights Reserved</p>
+  </div>
+</footer>
+
 </body>
 </html>
