@@ -13,12 +13,18 @@
       <input id="loginEmail" type="email" placeholder="Email" required>
       <input id="loginPassword" type="password" placeholder="Password" required>
       <div class="row">
-        <button type="submit">Login</button>
+       
+        <button type="submit" class="btn btn-success" onclick="loginUser()">Login</button>
+
       </div>
     </form>
     <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
   </div>
+  <script>
+function loginUser() {
+  window.location.href = "dashboard.html"; // Dashboard file
+}
+</script>
 
-  <script src="js/script.js"></script>
 </body>
 </html>

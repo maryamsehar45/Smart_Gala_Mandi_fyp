@@ -1,0 +1,153 @@
+/* ============================================================
+   MAIN WHITE + GREEN GRADIENT THEME (same as your original)
+   ============================================================ */
+.dashboard-wrapper {
+  position: relative;                 /* Allows floating shapes inside */
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px;
+  background: linear-gradient(135deg, #f6fff7, #e8ffe8);
+  /* SAME gradient you provided */
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   FLOATING BACKGROUND CIRCLES (copied exactly from your CSS)
+   ============================================================ */
+.dashboard-wrapper::before,
+.dashboard-wrapper::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.2;
+  background: radial-gradient(circle, #34a853, transparent 70%);
+  animation: float 10s infinite ease-in-out;
+}
+
+.dashboard-wrapper::before {
+  width: 120px;
+  height: 120px;
+  top: 20%;
+  left: 10%;
+}
+
+.dashboard-wrapper::after {
+  width: 180px;
+  height: 180px;
+  bottom: 10%;
+  right: 15%;
+  animation-delay: 3s;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-25px); }
+}
+
+
+/* ============================================================
+   SIDEBAR — DARK GREEN WITH WHITE TEXT (AS YOU REQUESTED)
+   ============================================================ */
+
+.sidebar {
+  width: 250px;
+  min-height: 100vh;
+  background: #04421f;   
+  /* DARK GREEN — elegant deep green tone */
+  padding: 25px 20px;
+  position: relative;
+  z-index: 10; /* Keep above floating shapes */
+}
+
+/* Sidebar title */
+.sidebar .brand-title {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/* Sidebar menu text */
+.sidebar .nav-link {
+  color: #ffffff;             /* White text */
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+/* Hover + active effect */
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background: rgba(255, 255, 255, 0.20);  /* White-glass highlight */
+  color: #ffffff;
+}
+
+
+/* ============================================================
+   WHITE CARDS & UI ELEMENTS (keep dashboard clean)
+   ============================================================ */
+
+.card, .stat-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+  border: none;
+}
+
+.stat-card small {
+  color: #444;
+}
+
+/* Form fields */
+.form-control, .form-select {
+  background: #ffffff;
+  border: 1px solid #c5e7c5;
+  color: #333;
+  border-radius: 10px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #34a853;
+  box-shadow: 0 0 0 3px rgba(52,168,83,0.25);
+}
+
+/* Green buttons */
+.btn-success {
+  background: #34a853;
+  border-color: #34a853;
+}
+
+.btn-success:hover {
+  background: #2e9449;
+}
+/* ============================================================
+   LOGO (Circle + Small Size)
+   ============================================================ */
+
+.logo-img {
+  width: 45px;          /* Small size */
+  height: 45px;         /* Must match width for perfect circle */
+  border-radius: 50%;   /* Makes the logo round */
+  object-fit: cover;    /* Prevents stretching / distortion */
+  border: 2px solid white;  /* Optional clean white border */
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media(max-width: 900px) {
+  .dashboard-wrapper {
+    padding: 20px;
+  }
+  
+}
+
+

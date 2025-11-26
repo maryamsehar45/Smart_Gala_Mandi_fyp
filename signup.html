@@ -31,7 +31,9 @@
       <input id="confirmPassword" type="password" placeholder="Confirm Password" required>
 
       <div class="row">
-        <button type="submit">Sign Up</button>
+       <button type="submit" onclick="signupSuccess()" class="btn btn-success">Create Account</button>
+
+
       </div>
 
       <p id="message" class="message"></p>
@@ -41,6 +43,12 @@
   </div>
 
   <script src="js/script.js"></script>
+  <script>
+  function signupSuccess() {
+    window.location.href = "dashboard.html"; // Dashboard open
+  }
+</script>
+
 </body>
 </html>
 
