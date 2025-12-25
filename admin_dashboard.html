@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li onclick="showSection('dashboard')">Dashboard</li>
+      <li onclick="showSection('sellers')">Sellers</li>
+      <li onclick="showSection('buyers')">Buyers</li>
+      <li onclick="showSection('products')">Products</li>
+    </ul>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="section active">
+      <h1>Dashboard Overview</h1>
+
+      <div class="cards-row">
+        <div class="count-card">
+          <h4>Total Buyers</h4>
+          <span id="buyersCount">0</span>
+        </div>
+
+        <div class="count-card">
+          <h4>Total Sellers</h4>
+          <span id="sellersCount">0</span>
+        </div>
+
+        <div class="count-card">
+          <h4>Total Products</h4>
+          <span id="productsCount">0</span>
+        </div>
+
+        <div class="count-card">
+          <h4>Total Categories</h4>
+          <span>6</span>
+        </div>
+      </div>
+
+      <div class="charts-row">
+        <canvas id="dailyVisits"></canvas>
+        <canvas id="monthlyVisits"></canvas>
+      </div>
+    </section>
+
+    <!-- SELLERS -->
+    <section id="sellers" class="section">
+      <h1>Sellers</h1>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+        <tr>
+          <td>Ali Khan</td>
+          <td>ali@gmail.com</td>
+          <td><button onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+        <tr>
+          <td>Ahmed</td>
+          <td>ahmed@gmail.com</td>
+          <td><button onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- BUYERS -->
+    <section id="buyers" class="section">
+      <h1>Buyers</h1>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+        <tr>
+          <td>Usman</td>
+          <td>usman@gmail.com</td>
+          <td><button onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="section">
+      <h1>Products</h1>
+      <table>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+        <tr>
+          <td>Apple</td>
+          <td>Rs 200</td>
+          <td><button onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
