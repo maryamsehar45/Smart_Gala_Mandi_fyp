@@ -411,7 +411,7 @@ footer .footer-inner {
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url("assets/new.jpg");
+      background-image: url("../assets/new.jpg");
       background-size: cover;
       background-position: center;
       
@@ -514,7 +514,7 @@ footer .footer-inner {
       position: absolute;
       width: 500px;
       height: 400px;
-      background: url("assets/background.jpg");
+      background: url("../assets/background.jpg");
       border: 3px solid orange;
       border-radius: 40px;
       box-shadow: 0 15px 40px rgba(255, 165, 0, 0.25);
@@ -525,7 +525,7 @@ footer .footer-inner {
     .hero-image .circle {
       width: 350px;
       height: 350px;
-      background: url("assets/new.jpg");
+      background: url("../assets/new.jpg");
       border-radius: 50%;
       position: absolute;
       z-index: 1;
@@ -770,6 +770,7 @@ footer .footer-inner {
   .about-image img {
     width: 250px;
   }
+<<<<<<< HEAD:style.css
 }
 /* Admin Dashboard */
 * {
@@ -885,3 +886,6 @@ button {
   cursor: pointer;
   border-radius: 5px;
 }
+=======
+}
+>>>>>>> e2a93a825f345ea019000b2df723b428c16c6a55:css/style.css

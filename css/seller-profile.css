@@ -1,0 +1,140 @@
+/* ==== Floating Background (same as dashboard) ==== */
+body {
+  background: linear-gradient(135deg, #f6fff7, #e8ffe8);
+  position: relative;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+body::before, body::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.25;
+  background: radial-gradient(circle, #34a853, transparent 70%);
+  animation: float 10s infinite ease-in-out;
+  z-index: 0;
+}
+
+body::before { width: 120px; height: 120px; top: 20%; left: 8%; }
+body::after { width: 180px; height: 180px; bottom: 12%; right: 10%; animation-delay: 3s; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-25px); }
+}
+
+/* ==== Sidebar ==== */
+.sidebar {
+  width: 230px;
+  height: 100vh;
+  background: #064d2e;
+  color: white;
+  position: fixed;
+  z-index: 3;
+}
+
+.nav-link {
+  color: white !important;
+  padding: 12px 10px;
+  font-size: 16px;
+}
+
+.nav-link:hover, .nav-link.active {
+  background: #0c8050;
+  border-radius: 6px;
+}
+
+/* ==== Main Profile Section ==== */
+.profile-section {
+  margin-left: 240px;
+  padding: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.profile-text h2 {
+  font-size: 30px;
+  color: #064d2e;
+  margin-bottom: 15px;
+}
+
+.info-box p {
+  background: white;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.upload-btn {
+  display: inline-block;
+  background: #0b8a46;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.upload-btn input {
+  display: none;
+}
+
+/* Right Image Section */
+.profile-image {
+  position: relative;
+  flex: 1 1 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-image::before {
+  content: "";
+  position: absolute;
+  width: 480px;
+  height: 380px;
+  border-radius: 40px;
+  background: linear-gradient(145deg, #a8e6a3, #43c45f);
+  border: 3px solid orange;
+}
+
+.circle {
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  background: #2ecc71;
+  position: absolute;
+}
+
+.profile-image img {
+  width: 300px;
+  border-radius: 20px;
+  position: relative;
+  z-index: 5;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .profile-container { flex-direction: column-reverse; text-align: center; }
+  .green-circle { width: 220px; height: 220px; }
+  .profile-image img { width: 200px; }
+  .sidebar { width: 200px; }
+  .profile-section { margin-left: 210px; }
+}
+
+.logo-img {
+  width: 45px;          /* Small size */
+  height: 45px;         /* Must match width for perfect circle */
+  border-radius: 50%;   /* Makes the logo round */
+  object-fit: cover;    /* Prevents stretching / distortion */
+  border: 2px solid white;  /* Optional clean white border */
+}
