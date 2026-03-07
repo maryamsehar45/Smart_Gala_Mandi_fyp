@@ -62,3 +62,68 @@ new Chart(document.getElementById("monthlyVisits"), {
     }]
   }
 });
+/* ======================
+   LOGIN PAGE SCRIPT
+====================== */
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+  loginForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
+
+    if (!email || !password) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    // ✅ Fake seller object (demo)
+    const seller = {
+      email: email,
+      name: email.split("@")[0]   // name auto
+    };
+
+    // ✅ Save fake login session
+    localStorage.setItem("loggedSeller", JSON.stringify(seller));
+
+    // ✅ Redirect to dashboard
+    window.location.href = "dashboard.html";
+  });
+}
+
+
+/* ======================
+   SIGNUP PAGE SCRIPT
+====================== */
+const signupForm = document.getElementById("signupForm");
+
+if (signupForm) {
+  signupForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+    if (!name || !email || !password || !confirmPassword) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    alert("Signup successful (demo)");
+    window.location.href = "login.html";
+  });
+}

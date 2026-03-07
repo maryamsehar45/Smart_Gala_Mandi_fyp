@@ -4,14 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Seller Sign Up</title>
+
+  <!-- Login / Signup CSS -->
   <link rel="stylesheet" href="css/signup-login.css">
 </head>
 
 <body>
+
   <div class="card">
     <h2>Create Seller Account</h2>
 
-    <form id="signupForm" onsubmit="return handleSignup(event)">
+    <!-- ❌ onsubmit hata diya -->
+    <form id="signupForm">
 
       <input id="name" type="text" placeholder="Full Name" required>
       <input id="email" type="email" placeholder="Email Address" required>
@@ -19,21 +23,13 @@
       <input id="whatsapp" type="text" placeholder="WhatsApp Number" required>
       <input id="city" type="text" placeholder="City / Location" required>
 
-       <!--<select id="category" required>
-        <option value="" disabled selected>Select Your Main Category</option>
-        <option value="fruits">Fruits Seller</option>
-        <option value="vegetables">Vegetables Seller</option>
-        <option value="grains">Grains Seller</option>
-        <option value="spices">Spices Seller</option>
-      </select>-->
 
       <input id="password" type="password" placeholder="Password" required>
       <input id="confirmPassword" type="password" placeholder="Confirm Password" required>
 
       <div class="row">
-       <button type="submit" onclick="signupSuccess()" class="btn btn-success">Create Account</button>
-
-
+        <!-- ❌ onclick hata diya -->
+        <button type="submit" class="btn btn-success">Create Account</button>
       </div>
 
       <p id="message" class="message"></p>
@@ -42,13 +38,15 @@
     <p>Already have an account? <a href="login.html">Login</a></p>
   </div>
 
-  <script src="js/script.js"></script>
-  <script>
-  function signupSuccess() {
-    window.location.href = "dashboard.html"; // Dashboard open
-  }
-</script>
+  <!-- MAIN JS FILE -->
+  <script src="js/script.js" defer></script>
+  <!-- agar js folder na ho to:
+  <script src="script.js" defer></script>
+  -->
 
 </body>
 </html>
+
+
+
 

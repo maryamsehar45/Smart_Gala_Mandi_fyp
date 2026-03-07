@@ -1,104 +1,125 @@
-function getCurrentTime() {
- const now = new Date();
-  let hours = now.getHours();
-  const minutes = now.getMinutes().toString().padStart(2, "0");
+/* =======================================================
+   SECTION TOGGLE (SIDEBAR NAVIGATION)
+   ======================================================= */
+function showSection(sectionId) {
+  document.querySelectorAll(".section").forEach(sec => {
+    sec.style.display = "none";
+    sec.classList.remove("active");
+  });
 
-  const ampm = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12;
-  hours = hours ? hours : 12; // 0 → 12
+  const activeSection = document.getElementById(sectionId);
+  if (activeSection) {
+    activeSection.style.display = "block";
+    activeSection.classList.add("active");
+  }
 
-  return `${hours}:${minutes} ${ampm}`;
+  document.querySelectorAll("#sidebar .nav-link").forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("onclick")?.includes(sectionId)) {
+      link.classList.add("active");
+    }
+  });
 }
 
+
 /* =======================================================
-   SAMPLE PRODUCTS WITH TIMESTAMPS INCLUDED
+   CURRENT TIME (HH:MM only – NO SECONDS)
+   ======================================================= */
+function getCurrentTime() {
+  const now = new Date();
+  return now.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+}
+
+function getCurrentDate() {
+  return new Date().toLocaleDateString();
+}
+
+
+/* =======================================================
+   SAMPLE PRODUCTS
    ======================================================= */
 let products = [
   {
-    name: 'Fresh Apples',
+    name: "Fresh Apples",
     price: 1200,
-    category: 'Fruits',
-    image: 'assets/apple.jpeg',
-    addedAt:  getCurrentTime()
+    category: "Fruits",
+    image: "assets/apple.jpeg",
+    addedDate: getCurrentDate(),
+    addedTime: getCurrentTime()
   },
   {
-    name: 'Red Tomatoes',
+    name: "Red Tomatoes",
     price: 50,
-    category: 'Vegetables',
-    image: 'assets/potato.jpeg',
-    addedAt:  getCurrentTime()
+    category: "Vegetables",
+    image: "assets/potato.jpeg",
+    addedDate: getCurrentDate(),
+    addedTime: getCurrentTime()
   }
 ];
 
 
 /* =======================================================
-   RENDER LISTINGS TABLE
+   RENDER LISTINGS TABLE  ✅ FIXED
    ======================================================= */
 function renderListings() {
-  const tbody = document.querySelector('#listingsTable tbody');
-  tbody.innerHTML = '';
+  const tbody = document.querySelector("#listingsTable tbody");
+  if (!tbody) return;
+
+  tbody.innerHTML = "";
 
   products.forEach((p, idx) => {
-    const tr = document.createElement('tr');
+    const tr = document.createElement("tr");
+
     tr.innerHTML = `
-      <td><img src="${p.image}" style="width:56px;height:40px;object-fit:cover;border-radius:8px"></td>
+      <td>
+        <img src="${p.image}" style="width:60px;height:45px;object-fit:cover;border-radius:8px">
+      </td>
       <td>${p.name}</td>
       <td>Rs. ${p.price}</td>
       <td>${p.category}</td>
-      <td>${p.addedAt || "—"}</td>
+      <td>${p.addedDate}<br><small>${p.addedTime}</small></td>
       <td>
         <button class="btn btn-sm btn-success me-1" onclick="openEdit(${idx})">
-          <i class='bi bi-pencil'></i> Update
+          Update
         </button>
         <button class="btn btn-sm btn-danger" onclick="deleteListing(${idx})">
-          <i class='bi bi-trash'></i> Delete
+          Delete
         </button>
       </td>
     `;
+
     tbody.appendChild(tr);
   });
 
-  document.getElementById('totalProducts').textContent = products.length;
-  document.getElementById('activeListings').textContent = products.length;
+  document.getElementById("totalProducts").innerText = products.length;
+  document.getElementById("activeListings").innerText = products.length;
 }
 
 
 /* =======================================================
-   COPY LISTING FOR QUICK EDIT
-   ======================================================= */
-function copyListing(idx) {
-  const p = products[idx];
-  document.getElementById('productName').value = p.name;
-  document.getElementById('productCategory').value = p.category;
-  document.getElementById('productImage').value = p.image;
-  document.getElementById('productPrice').value = p.price;
-  document.getElementById('productQuantity').value = '1';
-  document.getElementById('productDescription').value = '';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-
-/* =======================================================
-   OPEN EDIT MODE
+   EDIT PRODUCT
    ======================================================= */
 function openEdit(idx) {
+  showSection("addProductSection");
+
   const p = products[idx];
-  document.getElementById('productName').value = p.name;
-  document.getElementById('productCategory').value = p.category;
-  document.getElementById('productImage').value = p.image;
-  document.getElementById('productPrice').value = p.price;
-  document.getElementById('productQuantity').value = '1';
-  document.getElementById('productDescription').value = '';
-  document.getElementById('saveProduct').dataset.edit = idx;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById("productName").value = p.name;
+  document.getElementById("productCategory").value = p.category;
+  document.getElementById("productImage").value = p.image;
+  document.getElementById("productPrice").value = p.price;
+
+  document.getElementById("saveProduct").dataset.edit = idx;
 }
 
 
 /* =======================================================
-   DELETE LISTING
+   DELETE PRODUCT
    ======================================================= */
 function deleteListing(idx) {
-  if (confirm('Delete this listing?')) {
+  if (confirm("Delete this product?")) {
     products.splice(idx, 1);
     renderListings();
   }
@@ -106,67 +127,47 @@ function deleteListing(idx) {
 
 
 /* =======================================================
-   SAVE PRODUCT (ADD OR UPDATE)
+   SAVE PRODUCT (ADD / UPDATE)
    ======================================================= */
-document.getElementById('saveProduct').addEventListener('click', function () {
-
-  const name = document.getElementById('productName').value.trim();
-  const category = document.getElementById('productCategory').value;
-  const image = document.getElementById('productImage').value || 'assets/hero.png';
-  const price = Number(document.getElementById('productPrice').value) || 0;
+document.getElementById("saveProduct")?.addEventListener("click", () => {
+  const name = document.getElementById("productName").value.trim();
+  const category = document.getElementById("productCategory").value;
+  const price = Number(document.getElementById("productPrice").value) || 0;
+  const image = document.getElementById("productImage").value || "assets/hero.png";
 
   if (!name) {
-    alert('Please enter product name');
+    alert("Product name required");
     return;
   }
 
-  const editIdx = this.dataset.edit;
+  const editIdx = document.getElementById("saveProduct").dataset.edit;
 
   if (editIdx !== undefined) {
-    // UPDATE MODE
     products[editIdx] = {
       ...products[editIdx],
       name,
       category,
-      image,
-      price
+      price,
+      image
     };
-    delete this.dataset.edit;
+    delete document.getElementById("saveProduct").dataset.edit;
   } else {
-    // ADD NEW PRODUCT
     products.push({
       name,
-      price,
       category,
+      price,
       image,
-      addedAt: getCurrentTime()
-
+      addedDate: getCurrentDate(),
+      addedTime: getCurrentTime()
     });
   }
 
-  // Reset form
-  document.getElementById('productName').value = '';
-  document.getElementById('productImage').value = '';
-  document.getElementById('productPrice').value = '';
+  document.getElementById("productName").value = "";
+  document.getElementById("productPrice").value = "";
+  document.getElementById("productImage").value = "";
 
+  showSection("listingsSection");
   renderListings();
-});
-
-
-/* =======================================================
-   CANCEL SAVE
-   ======================================================= */
-document.getElementById('cancelSave').addEventListener('click', function () {
-  document.getElementById('productName').value = '';
-  document.getElementById('productImage').value = '';
-  document.getElementById('productPrice').value = '';
-  delete document.getElementById('saveProduct').dataset.edit;
-});
-
-
-/* Scroll to Add Form */
-document.getElementById('showAddForm').addEventListener('click', () => {
-  document.getElementById('addProductCard').scrollIntoView({ behavior: 'smooth' });
 });
 
 
@@ -174,30 +175,31 @@ document.getElementById('showAddForm').addEventListener('click', () => {
    PROVINCE → CITY DROPDOWN
    ======================================================= */
 const citiesByProvince = {
-  punjab: ["Lahore", "Faisalabad", "Multan", "Rawalpindi", "Gujranwala", "Sialkot", "Bahawalpur", "Sargodha"],
-  sindh: ["Karachi", "Hyderabad", "Sukkur", "Larkana", "Mirpur Khas", "Badin"],
-  kpk: ["Peshawar", "Abbottabad", "Mardan", "Swat", "Kohat", "Charsadda"],
-  balochistan: ["Quetta", "Gwadar", "Turbat", "Khuzdar", "Zhob"],
-  gilgit: ["Gilgit", "Skardu", "Hunza", "Nagar"],
-  ajk: ["Muzaffarabad", "Mirpur", "Kotli", "Bhimber"]
+  punjab: ["Lahore", "Faisalabad", "Multan"],
+  sindh: ["Karachi", "Hyderabad", "Sukkur"],
+  kpk: ["Peshawar", "Mardan", "Abbottabad"],
+  balochistan: ["Quetta", "Gwadar"],
+  gilgit: ["Gilgit", "Skardu"],
+  ajk: ["Muzaffarabad", "Mirpur"]
 };
 
-const provinceDropdown = document.getElementById("province");
-const cityDropdown = document.getElementById("city");
+const province = document.getElementById("province");
+const city = document.getElementById("city");
 
-provinceDropdown.addEventListener("change", function () {
-  const selectedProvince = this.value;
-  cityDropdown.innerHTML = `<option disabled selected>Select City</option>`;
-
-  citiesByProvince[selectedProvince].forEach(function (city) {
-    const option = document.createElement("option");
-    option.value = city;
-    option.textContent = city;
-    cityDropdown.appendChild(option);
+province?.addEventListener("change", function () {
+  city.innerHTML = `<option disabled selected>Select City</option>`;
+  citiesByProvince[this.value]?.forEach(c => {
+    const opt = document.createElement("option");
+    opt.textContent = c;
+    city.appendChild(opt);
   });
 });
 
 
-/* INITIAL RENDER */
-renderListings();
-
+/* =======================================================
+   INITIAL LOAD
+   ======================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  showSection("dashboardSection");
+  renderListings();
+});

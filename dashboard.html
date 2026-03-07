@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,62 +9,74 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- Your Custom CSS (theme + sidebar + floating background) -->
+  <!-- Custom Dashboard CSS -->
   <link href="css/dashboard.css" rel="stylesheet" />
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
 </head>
 
-
 <body>
 
 <div class="d-flex">
 
-  <!-- ================================
-       SIDEBAR (Dark Green + White Text)
-       ================================= -->
+  <!-- ==========================
+       SIDEBAR
+       ========================== -->
   <nav id="sidebar" class="sidebar p-3">
-    
-    <!-- Top Logo + Title -->
+
+    <!-- Logo -->
     <div class="mb-4 d-flex align-items-center gap-2">
-      <img src="assets/hero.jpg" alt="logo" class="logo-img me-2" />
+      <img src="assets/hero.jpg" class="logo-img me-2" />
       <div>
         <div class="h6 mb-0 text-white">SMART GALA MANDI</div>
         <small class="text-white-50">Seller Panel</small>
       </div>
     </div>
 
-    <!-- Sidebar Navigation -->
+    <!-- Sidebar Menu -->
     <ul class="nav flex-column">
-      <li class="nav-item"><a class="nav-link active" href="#"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-plus-square me-2"></i> Add Product</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-list-ul me-2"></i> Manage Listings</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-gear me-2"></i> Settings</a></li>
+      <li class="nav-item">
+        <a class="nav-link active" onclick="showSection('dashboardSection')">
+          <i class="bi bi-speedometer2 me-2"></i> Dashboard
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" onclick="showSection('addProductSection')">
+          <i class="bi bi-plus-square me-2"></i> Add Product
+        </a>
+      </li>
+
+      <li class="nav-item">
+       <a class="nav-link active" onclick="showSection('listingsSection', this)">
+  <i class="bi bi-list-ul me-2"></i> Manage Listings
+</a>
+
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" onclick="showSection('settingsSection')">
+          <i class="bi bi-gear me-2"></i> Settings
+        </a>
+      </li>
     </ul>
 
-    <!-- Footer Text -->
     <div class="mt-auto small text-white-50">© 2025 Smart Gala Mandi</div>
-
   </nav>
-  <!-- END SIDEBAR -->
 
-
-  <!-- =================================================
-       MAIN CONTENT AREA (White + Green Gradient + Floating Circles)
-       ================================================= -->
+  <!-- ==========================
+       MAIN CONTENT
+       ========================== -->
   <div class="flex-grow-1 p-4 dashboard-wrapper">
 
-    <!-- Dashboard Top Header -->
+    <!-- Top Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h2 class="mb-0 text-dark">Welcome, Farmer</h2>
+      <h2>Welcome, Farmer</h2>
 
-      <div class="d-flex align-items-center gap-2">
-
-        <!-- Language Button -->
+      <div class="d-flex gap-2">
         <button class="btn btn-outline-dark btn-sm">اردو</button>
 
-        <!-- Profile Dropdown -->
         <div class="dropdown">
           <button class="btn btn-success btn-sm dropdown-toggle" data-bs-toggle="dropdown">
             Profile
@@ -75,161 +86,161 @@
             <li><a class="dropdown-item" href="#">Logout</a></li>
           </ul>
         </div>
-
       </div>
     </div>
 
+    <!-- ==========================
+         DASHBOARD SECTION
+         ========================== -->
+    <div id="dashboardSection" class="section active">
 
-    <!-- ============================
-         Stat Cards Section
-         ============================ -->
-    <div class="row g-3 mb-4">
-      <div class="col-md-3">
-        <div class="card stat-card p-3">
-          <div class="h3 text Dark" id="totalProducts">32</div>
-          <small>Total Products Listed</small>
+      <div class="row g-3 mb-4">
+        <div class="col-md-3">
+          <div class="card stat-card p-3">
+            <div class="h3" id="totalProducts">32</div>
+            <small>Total Products</small>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card stat-card p-3">
+            <div class="h3" id="activeListings">16</div>
+            <small>Active Listings</small>
+          </div>
         </div>
       </div>
 
-      <div class="col-md-3">
-        <div class="card stat-card p-3">
-          <div class="h3 text Dark" id="activeListings">16</div>
-          <small>Active Listings</small>
-        </div>
-      </div>
-
-      
-
-
-    <!-- Buttons Above Forms -->
-    <div class="mb-3 d-flex gap-2">
-      <button class="btn btn-success" id="showAddForm">+ Add Product</button>
-      <button class="btn btn-secondary" id="viewListings">View All Listings</button>
     </div>
 
+    <!-- ==========================
+         ADD PRODUCT SECTION
+         ========================== -->
+   <!-- ==========================
+     ADD PRODUCT SECTION
+     ========================== -->
+<div id="addProductSection" class="section">
 
-    <!-- ============================
-         ADD PRODUCT FORM
-         ============================ -->
-    <div class="card p-4 mb-4" id="addProductCard">
-      <h4 class="text-dark">Add Product</h4>
+  <div class="card p-4 mb-4">
+    <h4>Add Product</h4>
 
-      <div class="row">
+    <div class="row">
+      <div class="col-md-6">
 
-        <!-- LEFT SIDE FORM -->
-        <div class="col-md-6">
+        <!-- Product Name -->
+        <input id="productName" class="form-control mb-3" placeholder="Product Name">
 
-          <div class="mb-3">
-            <input id="productName" class="form-control" placeholder="Product Name">
-          </div>
-          
+        <!-- Category -->
+        <select id="productCategory" class="form-select mb-3">
+          <option>Fruits</option>
+          <option>Vegetables</option>
+          <option>Grains</option>
+          <option>Spices</option>
+        </select>
 
-          <div class="mb-3">
-            <select id="productCategory" class="form-select">
-              <option>Fruits</option>
-              <option>Vegetables</option>
-              <option>Grains</option>
-              <option>Spices</option>
-            </select>
-          </div>
+        <!-- Image -->
+        <input id="productImage" class="form-control mb-3" placeholder="Image URL">
 
-          <div class="mb-3">
-            <input id="productImage" class="form-control" placeholder="Image URL (optional)">
-          </div>
-
-          <div class="d-flex gap-2 mb-3">
-            <input id="productPrice" class="form-control" placeholder="Price (Rs)">
-            <input id="productQuantity" class="form-control" placeholder="Quantity">
-          </div>
-
-          <div class="mb-3">
-            <textarea id="productDescription" class="form-control" rows="3" placeholder="Description"></textarea>
-          </div>
-          <!-- COUNTRY -->
-<div class="mb-3">
-  <label class="form-label">Country</label>
-  <select id="country" class="form-select">
-    <option value="pakistan" selected>Pakistan</option>
-  </select>
-</div>
-
-<!-- PROVINCE -->
-<div class="mb-3">
-  <label class="form-label">Province</label>
-  <select id="province" class="form-select">
-    <option value="" disabled selected>Select Province</option>
-    <option value="punjab">Punjab</option>
-    <option value="sindh">Sindh</option>
-    <option value="kpk">Khyber Pakhtunkhwa</option>
-    <option value="balochistan">Balochistan</option>
-    <option value="gilgit">Gilgit Baltistan</option>
-    <option value="ajk">Azad Kashmir</option>
-  </select>
-</div>
-
-<!-- CITY (AUTO UPDATES) -->
-<div class="mb-3">
-  <label class="form-label">City</label>
-  <select id="city" class="form-select">
-    <option disabled selected>Select City</option>
-  </select>
-</div>
-
-
-          <div class="d-flex gap-2">
-            <button class="btn btn-success" id="saveProduct">Save</button>
-            <button class="btn btn-outline-dark" id="cancelSave">Cancel</button>
-          </div>
-
+        <!-- Price + Quantity -->
+        <div class="d-flex gap-2 mb-3">
+          <input id="productPrice" class="form-control" placeholder="Price">
+          <input id="productQuantity" class="form-control" placeholder="Quantity">
         </div>
 
+        <!-- Description -->
+        <textarea id="productDescription" class="form-control mb-3" rows="3"
+          placeholder="Description"></textarea>
 
-        <!-- RIGHT SIDE LIST PREVIEW -->
-        <div class="col-md-6">
-            <h5 class="text-dark mb-3"></h5>
-         <div id="manageList"></div>
+        <!-- COUNTRY -->
+        <div class="mb-3">
+          <label class="form-label">Country</label>
+          <select id="country" class="form-select">
+            <option value="pakistan" selected>Pakistan</option>
+          </select>
+        </div>
+
+        <!-- PROVINCE -->
+        <div class="mb-3">
+          <label class="form-label">Province</label>
+          <select id="province" class="form-select">
+            <option value="" disabled selected>Select Province</option>
+            <option value="punjab">Punjab</option>
+            <option value="sindh">Sindh</option>
+            <option value="kpk">Khyber Pakhtunkhwa</option>
+            <option value="balochistan">Balochistan</option>
+            <option value="gilgit">Gilgit Baltistan</option>
+            <option value="ajk">Azad Kashmir</option>
+          </select>
+        </div>
+
+        <!-- CITY -->
+        <div class="mb-3">
+          <label class="form-label">City</label>
+          <select id="city" class="form-select">
+            <option disabled selected>Select City</option>
+          </select>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="d-flex gap-2">
+          <button class="btn btn-success" id="saveProduct">Save</button>
+          <button class="btn btn-outline-dark" id="cancelSave">Cancel</button>
         </div>
 
       </div>
     </div>
+  </div>
+
+</div>
 
 
-    <!-- ============================
-         LISTINGS TABLE
-         ============================ -->
-    <div class="card p-3">
-      <h5 class="text-dark">Manage Listings</h5>
+   <!-- ==========================
+     MANAGE LISTINGS SECTION
+     ========================== -->
+<div id="listingsSection" class="section">
 
-      <div class="table-responsive">
-        <table class="table table-striped align-middle" id="listingsTable">
-          <thead class="table-success">
-            <tr>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Category</th>
-              <th>Added On</th> <!-- NEW COLUMN -->
-              <th>Action</th>
+  <div class="card">
+    <h4 class="mb-3">Manage Listings</h4>
 
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+    <table class="table" id="listingsTable">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Added On</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- JS yahan products inject karega -->
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+
+    <!-- ==========================
+         SETTINGS SECTION
+         ========================== -->
+    <div id="settingsSection" class="section">
+      <div class="card p-4">
+        <h4>Settings</h4>
+        <p>Account & dashboard settings will be here.</p>
       </div>
-
     </div>
 
   </div>
-  <!-- END MAIN CONTENT -->
-
 </div>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Your Dashboard JS -->
+<!-- Dashboard JS -->
 <script src="js/dashboard.js"></script>
 
 </body>
 </html>
-
