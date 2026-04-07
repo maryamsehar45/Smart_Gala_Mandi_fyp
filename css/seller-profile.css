@@ -28,7 +28,7 @@ body::after { width: 180px; height: 180px; bottom: 12%; right: 10%; animation-de
 .sidebar {
   width: 230px;
   height: 100vh;
-  background: #064d2e;
+  background: #000;
   color: white;
   position: fixed;
   z-index: 3;
@@ -41,7 +41,7 @@ body::after { width: 180px; height: 180px; bottom: 12%; right: 10%; animation-de
 }
 
 .nav-link:hover, .nav-link.active {
-  background: #0c8050;
+  background: #252525;
   border-radius: 6px;
 }
 
