@@ -138,7 +138,8 @@
         </select>
 
         <!-- Image -->
-        <input id="productImage" class="form-control mb-3" placeholder="Image URL">
+         <input type="file" id="productImage" class="form-control mb-3" accept="image/*">
+        <img id="imagePreview" style="width:100px; display:none; margin-top:10px;">
 
         <!-- Price + Quantity -->
         <div class="d-flex gap-2 mb-3">
@@ -207,6 +208,7 @@
           <th>Image</th>
           <th>Name</th>
           <th>Price</th>
+          <th>Quantity</th>
           <th>Category</th>
           <th>Added On</th>
           <th>Action</th>
