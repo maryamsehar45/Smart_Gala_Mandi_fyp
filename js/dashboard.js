@@ -2,7 +2,7 @@
    SECTION SWITCHING (SIDEBAR NAVIGATION)
    ======================================================= */
 function showSection(sectionId) {
-  // Sab sections hide karo
+  
   document.querySelectorAll(".section").forEach(sec => {
     sec.style.display = "none";
     sec.classList.remove("active");
@@ -48,7 +48,7 @@ function getCurrentDate() {
    PRODUCTS ARRAY (FRONTEND STORAGE)
    ======================================================= */
 
-// Yahan temporary data store hoga (refresh par reset ho jayega)
+
 let products = [
   {
     name: "Fresh Apples",
@@ -126,14 +126,14 @@ function openEdit(idx) {
   document.getElementById("productPrice").value = p.price;
   document.getElementById("productQuantity").value = p.quantity;
 
-  // Image preview show karo (file input set nahi hota)
+  // Image preview 
   const preview = document.getElementById("imagePreview");
   if (preview) {
     preview.src = p.image;
     preview.style.display = "block";
   }
 
-  // Save button ko batao ke ye edit mode hai
+  // edit mode 
   document.getElementById("saveProduct").dataset.edit = idx;
 }
 
@@ -150,7 +150,7 @@ function deleteListing(idx) {
 
 
 /* =======================================================
-   IMAGE PREVIEW (FILE SELECT KARTE HI SHOW)
+   IMAGE PREVIEW
    ======================================================= */
 document.getElementById("productImage")?.addEventListener("change", function () {
   const file = this.files[0];

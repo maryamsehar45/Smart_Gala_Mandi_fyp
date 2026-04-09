@@ -15,7 +15,7 @@ searchInput.addEventListener('input', () => {
   document.querySelectorAll('.product-card').forEach(card => {
     const name = card.querySelector('h5').textContent.toLowerCase();
     if(name.includes(searchValue) || searchValue === ''){
-      card.style.display = "block";
+      card.style.display = "flex";
     } else {
       card.style.display = "none";
     }
@@ -36,7 +36,6 @@ cityFilter.addEventListener('change', () => {
   });
 });
 document.addEventListener('DOMContentLoaded', function() {
-  // ہر WhatsApp button کو update کریں
   document.querySelectorAll('.whatsapp-btn').forEach(btn => {
     const productName = btn.closest('.product-info').querySelector('h5').textContent;
     const currentHref = btn.getAttribute('href');
