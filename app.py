@@ -1,9 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 # =========================
-# HOME PAGE ROUTE
+# HOME PAGE
 # =========================
 @app.route('/')
 def home():
@@ -11,7 +11,7 @@ def home():
 
 
 # =========================
-# ABOUT PAGE ROUTE
+# ABOUT PAGE
 # =========================
 @app.route('/about')
 def about():
@@ -19,34 +19,63 @@ def about():
 
 
 # =========================
-# CONTACT PAGE ROUTE
+# CONTACT PAGE (GET + POST)
 # =========================
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
+
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        message = request.form['message']
+
+        # 🔴 yahan database save hoga later
+        print("Contact Form Data:")
+        print(name, email, message)
+
+        return "Message Sent Successfully"
+
     return render_template('contact.html')
 
 
 # =========================
-# LOGIN PAGE ROUTE
+# LOGIN PAGE (GET + POST)
 # =========================
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        # 🔴 yahan database check hoga later
+        print("Login Data:")
+        print(email, password)
+
+        return "Login Success"
+
     return render_template('login.html')
 
 
 # =========================
-# MARKETPLACE PAGE ROUTE
+# MARKETPLACE PAGE
 # =========================
 @app.route('/marketplace')
 def marketplace():
     return render_template('marketplace.html')
 
+
 # =========================
-# DASHBOARD PAGE ROUTE
+# DASHBOARD PAGE
 # =========================
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
 
+
+# =========================
+# RUN APP
+# =========================
 if __name__ == '__main__':
     app.run(debug=True)
+    

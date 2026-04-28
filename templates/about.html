@@ -3,65 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Gala Mandi - Home</title>
+  <title>Smart Gala Mandi - About Us</title>
+
+  <!-- CSS (Flask static fix) -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/script.js" defer></script>
-</head>  
+
+  <!-- JS -->
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+
 <body>
 
   <!-- ===== HEADER START ===== -->
- <header class="site-header">
-  <div class="site-header-inner">
-    <div class="logo">
-      <img src="assets/logo.png" alt="Smart Gala Mandi Logo">
-      <div class="logo-text">Smart Gala Mandi</div>
-    </div>
+  <header class="site-header">
+    <div class="site-header-inner">
 
-    <div class="menu-toggle">
-      <i class="fas fa-bars"></i>
-    </div>
+      <!-- LOGO -->
+      <div class="logo">
+        <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Smart Gala Mandi Logo">
+        <div class="logo-text">Smart Gala Mandi</div>
+      </div>
 
-    <nav class="nav">
-      <a href="index.html" class="active">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="contact.html">Contact Us</a>
-    </nav>
+      <!-- MENU -->
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
 
-    <div class="header-actions">
-      <a href="login.html" class="cta-button">Login</a>
-      <div class="lang-btn">Eng / اردو</div>
-    </div>
-  </div>
-</header>
-<section class="about-section">
-  <div class="about-content">
-    <div class="about-text">
-      <h2>About Us</h2>
-      <p>
-        Smart Gala Mandi is a modern digital marketplace that connects farmers,
-        traders, and buyers through a reliable online platform. We aim to make
-        agriculture trading simple, transparent, and profitable for everyone.
-      </p>
-      <p>
-        Our mission is to empower local farmers with digital tools and help
-        buyers access fresh produce directly from trusted sources — saving time,
-        cost, and effort.
-      </p>
+      <!-- NAV -->
+      <nav class="nav">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}" class="active">About Us</a>
+        <a href="{{ url_for('contact') }}">Contact Us</a>
+      </nav>
+
+      <!-- ACTIONS -->
+      <div class="header-actions">
+        <a href="{{ url_for('login') }}" class="cta-button">Login</a>
+        <div class="lang-btn">Eng / اردو</div>
+      </div>
 
     </div>
+  </header>
 
-    <div class="about-image">
-      <div class="circle"></div>
-      <img src="assets/about.png" alt="About Smart Gala Mandi" />
+  <!-- ===== ABOUT SECTION ===== -->
+  <section class="about-section">
+
+    <div class="about-content">
+
+      <!-- TEXT SIDE -->
+      <div class="about-text">
+
+        <h2>About Us</h2>
+
+        <p>
+          Smart Gala Mandi is a modern digital marketplace that connects farmers,
+          traders, and buyers through a reliable online platform. We aim to make
+          agriculture trading simple, transparent, and profitable for everyone.
+        </p>
+
+        <p>
+          Our mission is to empower local farmers with digital tools and help
+          buyers access fresh produce directly from trusted sources — saving time,
+          cost, and effort.
+        </p>
+
+      </div>
+
+      <!-- IMAGE SIDE -->
+      <div class="about-image">
+        <div class="circle"></div>
+
+        <img src="{{ url_for('static', filename='assets/about.png') }}"
+             alt="About Smart Gala Mandi">
+      </div>
+
     </div>
-  </div>
-</section>
-<footer>
-  <div class="footer-inner">
-    <p>© 2025 Smart Gala Mandi | All Rights Reserved</p>
-  </div>
-</footer>
+
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <p>© 2025 Smart Gala Mandi | All Rights Reserved</p>
+    </div>
+  </footer>
 
 </body>
 </html>

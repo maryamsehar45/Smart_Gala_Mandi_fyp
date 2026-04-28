@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Seller Sign Up</title>
 
-  <!-- Login / Signup CSS -->
-  <link rel="stylesheet" href="css/signup-login.css">
+  <!-- CSS (Flask static fix) -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/signup-login.css') }}">
 </head>
 
 <body>
@@ -14,34 +14,41 @@
   <div class="card">
     <h2>Create Seller Account</h2>
 
-    <!-- ❌ onsubmit hata diya -->
-    <form method="POST" action="/signup">
-      <input id="name" type="text" placeholder="Full Name" required>
-      <input id="email" type="email" placeholder="Email Address" required>
-      <input id="phone" type="text" placeholder="Phone Number" required>
-      <input id="whatsapp" type="text" placeholder="WhatsApp Number" required>
-      <input id="city" type="text" placeholder="City / Location" required>
+    <!-- Flask POST route -->
+    <form method="POST" action="{{ url_for('signup') }}">
 
+      <input name="name" type="text" placeholder="Full Name" required>
 
-      <input id="password" type="password" placeholder="Password" required>
-      <input id="confirmPassword" type="password" placeholder="Confirm Password" required>
+      <input name="email" type="email" placeholder="Email Address" required>
+
+      <input name="phone" type="text" placeholder="Phone Number" required>
+
+      <input name="whatsapp" type="text" placeholder="WhatsApp Number" required>
+
+      <input name="city" type="text" placeholder="City / Location" required>
+
+      <input name="password" type="password" placeholder="Password" required>
+
+      <input name="confirmPassword" type="password" placeholder="Confirm Password" required>
 
       <div class="row">
-        <!-- ❌ onclick hata diya -->
-        <button type="submit" class="btn btn-success">Create Account</button>
+        <button type="submit" class="btn btn-success">
+          Create Account
+        </button>
       </div>
 
       <p id="message" class="message"></p>
+
     </form>
 
-    <p>Already have an account? <a href="login.html">Login</a></p>
+    <p>
+      Already have an account?
+      <a href="{{ url_for('login') }}">Login</a>
+    </p>
   </div>
 
-  <!-- MAIN JS FILE -->
-  <script src="js/script.js" defer></script>
-  <!-- agar js folder na ho to:
-  <script src="script.js" defer></script>
-  -->
+  <!-- JS -->
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 
 </body>
 </html>
