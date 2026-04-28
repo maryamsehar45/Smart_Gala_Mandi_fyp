@@ -29,7 +29,6 @@ def contact():
         email = request.form['email']
         message = request.form['message']
 
-        # 🔴 yahan database save hoga later
         print("Contact Form Data:")
         print(name, email, message)
 
@@ -48,13 +47,34 @@ def login():
         email = request.form['email']
         password = request.form['password']
 
-        # 🔴 yahan database check hoga later
         print("Login Data:")
         print(email, password)
 
         return "Login Success"
 
     return render_template('login.html')
+
+
+# =========================
+# SIGNUP PAGE (GET + POST)
+# =========================
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+        whatsapp = request.form['whatsapp']
+        city = request.form['city']
+        password = request.form['password']
+
+        print("Signup Data:")
+        print(name, email, phone, whatsapp, city, password)
+
+        return "Account Created Successfully"
+
+    return render_template('signup.html')
 
 
 # =========================
