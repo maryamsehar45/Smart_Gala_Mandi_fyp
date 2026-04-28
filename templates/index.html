@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Gala Mandi - Home</title>
+
+  <!-- CSS (Flask correct path) -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- JS (Flask correct path) -->
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="site-header-inner">
+
+      <!-- LOGO -->
+      <div class="logo">
+        <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Smart Gala Mandi Logo">
+        <div class="logo-text">Smart Gala Mandi</div>
+      </div>
+
+      <!-- MENU ICON -->
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <!-- NAVBAR -->
+      <nav class="nav">
+        <a href="{{ url_for('home') }}" class="active">Home</a>
+        <a href="{{ url_for('about') }}">About Us</a>
+        <a href="{{ url_for('contact') }}">Contact Us</a>
+      </nav>
+
+      <!-- HEADER BUTTONS -->
+      <div class="header-actions">
+
+        <a href="{{ url_for('login') }}" class="cta-button">Login</a>
+
+        <a href="{{ url_for('marketplace') }}" class="btn btn-primary">
+          Explore Marketplace
+        </a>
+
+        <a href="{{ url_for('dashboard') }}" class="btn btn-success">
+          Start Selling
+        </a>
+
+        <div class="lang-btn">Eng / اردو</div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-section">
+
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+
+      <!-- TEXT -->
+      <div class="hero-text">
+        <h1>Welcome to Smart Gala Mandi</h1>
+        <p>Online platform for farmers and buyers</p>
+
+        <div class="hero-buttons">
+          <a href="{{ url_for('marketplace') }}" class="btn btn-primary">
+            Explore Marketplace
+          </a>
+
+          <a href="{{ url_for('dashboard') }}" class="btn btn-success">
+            Start Selling
+          </a>
+        </div>
+      </div>
+
+      <!-- IMAGE -->
+      <div class="hero-image">
+        <div class="circle"></div>
+
+        <img src="{{ url_for('static', filename='assets/girl.png') }}"
+             alt="Smart Gala Mandi">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="footer-inner">
+      <p>© 2025 Smart Gala Mandi | All Rights Reserved</p>
+    </div>
+  </footer>
+
+</body>
+</html>
